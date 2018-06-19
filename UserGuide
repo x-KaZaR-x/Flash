@@ -1,0 +1,18 @@
+THINGS YOU NEED
+
+*Channels (exact syntax):
+- "admins-logs"
+- "server-logs"
+
+*Roles (exact syntax):
+- "Admin"
+- "Bot"
+- "Guest" 
+
+*Extention
+-ms
+-nodemon
+-npm install diff --save
+
+let bicon = bot.user.displayAvatarURL
+let sicon = message.guild.iconURL
