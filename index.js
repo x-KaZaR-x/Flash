@@ -54,7 +54,7 @@ if(cmd === `${prefix}help`) {
 //invite link
 if(cmd === `${prefix}invitation`) {
      message.delete()
-     message.channel.send ("Aaaand tada ! --> https://discord.gg/23tac4R ").then(msg => msg.delete (60000));
+     message.channel.send ("Bip Boop... Aaaand tada ! --> https://discord.gg/23tac4R ").then(msg => msg.delete (60000));
 }
    
 
