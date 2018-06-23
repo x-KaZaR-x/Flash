@@ -4,7 +4,7 @@ const newUsers = new Discord.Collection();
 const bot = new Discord.Client();
 const prefix = '!';
 const ms = require ("ms");
-
+const ddiff = require ("return-deep-diff");
 
 bot.on("ready", async () => {
     console.log(`${bot.user.username} is online on ${bot.guilds.size} server(s)!`);
