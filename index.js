@@ -54,7 +54,7 @@ if(cmd === `${prefix}help`) {
 //invite link
 if(cmd === `${prefix}invitation`) {
      message.delete()
-     message.channel.send ("Bip Boop... Aaaand tada ! --> https://discord.gg/23tac4R ").then(msg => msg.delete (60000));
+     message.channel.send ("Bip Boop... Aaaand tada ! --> https://discord.gg/efY5FMv ").then(msg => msg.delete (60000));
 }
    
 
@@ -71,7 +71,7 @@ if(cmd === `${prefix}serverinfo`) {
         .addField ("Created On", message.guild.createdAt)
         .addField ("Created By", "KaZaR")
         .addField ("Total Members", message.guild.memberCount)
-        .addField ("Invitaton link", "https://discord.gg/23tac4R feel free to use it!")
+        .addField ("Invitaton link", "https://discord.gg/efY5FMv feel free to use it!")
         .addBlankField ()
         .addField ("Bot name", bot.user.username)
         .addField ("Bot creator", "KaZaR")
