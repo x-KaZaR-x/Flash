@@ -37,11 +37,12 @@ if(cmd === `${prefix}help`) {
         .setColor ("#004de6")
         .addBlankField ()
         .addField ("!serverinfo", "will display some informations about the server")
+        .addField ("!invitation", "Dispay a invitation link you can share to invite your friends to the server")
         .addField ("!help", "Will display the list of the commands")
         .addField ("!report <@tag-a-user> <reason>", "Will create a report in the right channel, you have to specify a reason !")
         .addField ("!kick <@tag-a-user>", "will kick the user (kick-members permission needed)")
         .addField ("!ban <@tag-a-user>", "will ban the user (ban-members permission needed)")
-        .addField ("!mute <@tag-a-user> <nbr><s/m/d>", "will mute the user for the specified duration and automatically unmute him (mute-members permission needed)")
+        .addField ("!mute <@tag-a-user> <nbr> <s/m/d>", "will mute the user for the specified duration and automatically unmute him (mute-members permission needed)")
         .addField ("!clear <nbr>", "will delete the specified number of messages in the channel you are typing this command (manage-messages permission needed)")
         .addBlankField ()
         .setFooter ("In order to keep the channel clean this message will be deleted in 1 minute but you can call this command anytime you want !");
