@@ -2,7 +2,8 @@ THINGS YOU NEED
 
 *Channels (exact syntax):
 - "admins-logs"
-- "server-logs"
+- "announcements"
+- "general-chat"
 
 *Roles (exact syntax):
 - "Admin"

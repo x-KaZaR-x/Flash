@@ -55,7 +55,7 @@ if(cmd === `${prefix}help`) {
 //invite link
 if(cmd === `${prefix}invitation`) {
      message.delete()
-     message.channel.send ("Bip Boop... Aaaand tada ! --> https://discord.gg/efY5FMv ").then(msg => msg.delete (60000));
+     message.channel.send ("Bip Boop... Aaaand tada ! --> https://discord.gg/mTJEMYP ").then(msg => msg.delete (60000));
 }
    
 
@@ -72,7 +72,7 @@ if(cmd === `${prefix}serverinfo`) {
         .addField ("Created On", message.guild.createdAt)
         .addField ("Created By", "KaZaR")
         .addField ("Total Members", message.guild.memberCount)
-        .addField ("Invitaton link", "https://discord.gg/efY5FMv feel free to use it!")
+        .addField ("Invitaton link", "https://discord.gg/mTJEMYP feel free to use it!")
         .addBlankField ()
         .addField ("Bot name", bot.user.username)
         .addField ("Bot creator", "KaZaR")
@@ -85,7 +85,7 @@ if(cmd === `${prefix}serverinfo`) {
 }
 
 
-//REPORT COMMAND
+//REPORT COMMAND //add dm to the reported
 if(cmd === `${prefix}report`) {
         message.delete()
         let rUser = message.guild.member(message.mentions.users.first());
@@ -102,7 +102,7 @@ if(cmd === `${prefix}report`) {
         .addField ("Reason", reason)
         .setTimestamp (new Date());
 
-        let reportschannel = message.guild.channels.find(`name`, "server-logs");
+        let reportschannel = message.guild.channels.find(`name`, "admins-logs");
         reportschannel.send(reportembed);
 }
 
@@ -160,7 +160,7 @@ if(cmd === `${prefix}kick`) {
 
 
     message.guild.member(kUser).kick(kReason);
-    let reportschannel = message.guild.channels.find(`name`, "server-logs");
+    let reportschannel = message.guild.channels.find(`name`, "announcements");
     reportschannel.send(kickembed);
 
     return;
@@ -218,7 +218,7 @@ if(cmd === `${prefix}ban`) {
 
 
     message.guild.member(bUser).ban(bReason);
-    let reportschannel = message.guild.channels.find(`name`, "server-logs");
+    let reportschannel = message.guild.channels.find(`name`, "announcements");
     reportschannel.send(banembed);
 
     return;
@@ -274,7 +274,7 @@ if(!message.member.hasPermission("MUTE_MEMBERS")) {
     .addField ("Time", message.createdAt)
     .setTimestamp (new Date());
 
-    let reportschannel = message.guild.channels.find(`name`, "server-logs");
+    let reportschannel = message.guild.channels.find(`name`, "general-chat");
     reportschannel.send(muteembed);
 
 
@@ -322,7 +322,7 @@ bot.on("guildMemberAdd", (member) => {
     console.log(`New User ${member} has joined ${member.guild.name}` );
     member.addRole(member.guild.roles.find("name", "Guest")); //add a default role !change the name of the role!
     
-      let welcomechannel = member.guild.channels.find('name', 'server-logs');
+      let welcomechannel = member.guild.channels.find('name', 'general-chat');
       let welcomeembed = new Discord.RichEmbed()
       .setColor("#004de6")
       .setTitle(':satellite: New Member ! :satellite: ')
@@ -336,7 +336,7 @@ bot.on("guildMemberRemove", (member) => {
 
     console.log(`New User ${member} just bailed on the server` );
 
-      let leavechannel = member.guild.channels.find('name', 'server-logs');
+      let leavechannel = member.guild.channels.find('name', 'general-chat');
       let leaveembed = new Discord.RichEmbed()
       .setColor("#004de6")
       .setTitle(':satellite: Good riddance ! :satellite: ')
@@ -347,7 +347,7 @@ bot.on("guildMemberRemove", (member) => {
   
 bot.on("roleDelete", (role) => {
 
-    let logschannel = role.guild.channels.find('name', 'server-logs');
+    let logschannel = role.guild.channels.find('name', 'admins-logs');
     let RDeleteembed = new Discord.RichEmbed()
     .setColor("#004de6")
     .setDescription(`:x: The role ${role.name} does not longer exist`);
@@ -355,9 +355,23 @@ bot.on("roleDelete", (role) => {
 return logschannel.send(RDeleteembed)
 });
 
+bot.on("roleCreate", (role) => {
+
+    let logschannel = role.guild.channels.find('name', 'general-chat');
+    let RCreateembed = new Discord.RichEmbed()
+    .setColor("#004de6")
+    .setDescription(`A role called ${role.name} have been created`);
+
+return logschannel.send(RCreateembed)
+});
+
 bot.on("roleUpdate", async (oldRole, newRole) => {
 
-    let logschannel = newRole.guild.channels.find('name', 'server-logs');
+    let logschannel = newRole.guild.channels.find('name', 'admins-logs');
+        if(oldRole.displayName == newRole.displayName){
+        return;
+        }
+
     let RUpdateembed = new Discord.RichEmbed()
     .setColor("#004de6")
     .setDescription(`The role ${oldRole.name} has been changed to ${newRole}`);
@@ -367,7 +381,7 @@ return logschannel.send(RUpdateembed)
 
 bot.on("guildMemberUpdate", async (oldMember, newMember) => {
 
-  let logschannel = newMember.guild.channels.find('name', 'server-logs');
+  let logschannel = newMember.guild.channels.find('name', 'general-chat');
    
     if(oldMember.displayName == newMember.displayName){
         return;
@@ -382,7 +396,7 @@ return logschannel.send(UUpdateembed)
 
 bot.on("channelCreate", async (channel) => {
 
-    let logschannel = channel.guild.channels.find('name', 'server-logs');
+    let logschannel = channel.guild.channels.find('name', 'admins-logs');
   
       let newChanEmbed = new Discord.RichEmbed()
       .setColor("#004de6")
@@ -395,7 +409,7 @@ bot.on("channelCreate", async (channel) => {
   
 bot.on("channelDelete", async (channel) => {
 
-    let logschannel = channel.guild.channels.find('name', 'server-logs');
+    let logschannel = channel.guild.channels.find('name', 'admins-logs');
   
       let delChanEmbed = new Discord.RichEmbed()
       .setColor("#004de6")
@@ -403,3 +417,27 @@ bot.on("channelDelete", async (channel) => {
     
       return logschannel.send(delChanEmbed);
   });
+
+//bot.on("channelUpdate", async (oChannel, nChannel) => {
+
+ //let logschannel = oChannel.guild.channels.find('name', 'admins-logs');
+  
+   // let newChanEmbed = new Discord.RichEmbed()
+    //.setColor("#004de6")
+    //.setTitle(`The ${oChannel.type} channel with the name of ${oChannel.name} have been updated !`)
+    //.setDescription ("");
+  
+  //return logschannel.send(newChanEmbed);
+  //});
+  
+bot.on("channelPinsUpdate", async (channel, time) => {
+
+    let logschannel = channel.guild.channels.find('name', 'general-chat');
+     
+       let newChanEmbed = new Discord.RichEmbed()
+       .setColor("#004de6")
+       .setDescription (`Channel Pins in ${channel.name} have been updated !`);
+
+     return logschannel.send(newChanEmbed);
+     });
+     
